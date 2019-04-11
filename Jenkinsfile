@@ -1,5 +1,5 @@
 node{
-      def dockerImageName= 'rajnikhattarrsinha/javademoapp_$JOB_NAME:$BUILD_NUMBER'
+      def dockerImageName= 'prathiksha29/javademoapp_$JOB_NAME:$BUILD_NUMBER'
       stage('SCM Checkout'){
          git 'https://github.com/LovesCloud/java-tomcat-demo-app/'
       }
@@ -20,7 +20,7 @@ node{
    
       stage('Publish Docker Image'){
          withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
-              sh "docker login -u rajnikhattarrsinha -p ${dockerPWD}"
+              sh "docker login -u prathiksha29 -p ${dockerPWD}"
          }
         sh "docker push ${dockerImageName}"
       }
